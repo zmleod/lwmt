@@ -52,6 +52,12 @@ if (isset($_COOKIE['lwmt_dm'])) {
       </div>
     </div>
     <div class="layui-form-item" style="margin-top: 10px;">
+      <label class="layui-form-label">修订记录</label>
+      <div class="layui-inline">
+      <textarea name="edit_record" placeholder="" class="layui-textarea" rows="10" cols="50" style="white-space:pre-line;"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item" style="margin-top: 10px;">
       <label class="layui-form-label">编制部门</label>
       <div class="layui-inline">
         <input type="text" placeholder="编制部门" class="layui-input" style="width:300px;" name="department">

@@ -35,9 +35,13 @@ $get_row = mysql_fetch_array( $result );
 if($get_row['username']){
     
  $cookie_name = 'lwmt_dm';
-$cookie_value = $username;
-$cookie_expire = time() + (86400 * 30); // 设置cookie过期时间为30天
+ $cookie_value = $username;
+ $cookie_expire = time() + (86400 * 30); // 设置cookie过期时间为30天
+ $cookie_path='/';
+
   setcookie($cookie_name, $cookie_value, $cookie_expire);
+
+  // setcookie('wikiUserName',$cookie_value,$cookie_expire,$cookie_path,'');
     
  echo json_encode(array("message" =>'123', "code" => 0));
     

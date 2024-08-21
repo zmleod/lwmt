@@ -9,6 +9,11 @@
   <script src="../../assets/js/layui.js"></script>
   <script src="../../../assets/js/jquery.min.js"></script>
 </head>
+<style>
+  .layui-table-cell {
+    height: auto !important;
+  }
+</style>
 
 <body>
   <table id="my_table" lay-filter="my_table">
@@ -66,6 +71,29 @@
                 field: 'effective_date',
                 title: '生效日期',
                 width: 120
+              },
+              {
+                title: "修订记录",
+
+                width: 290,
+                align: "left",
+                event: "",
+                templet: function(d) {
+                  if (d.edit_record == null) {
+                    let
+                      html = '<div style="justify-content:left;height: auto;line-height: auto;  white-space: pre;">';
+
+                    html += '</div>';
+                    return html;
+                  } else {
+                    let
+                      html = '<div style="justify-content:left;height: auto;line-height: auto;  white-space: pre;">';
+                    html += d.edit_record;
+                    html += '</div>';
+                    return html;
+                  }
+
+                },
               },
               {
                 field: 'remark',
@@ -134,17 +162,17 @@
                 },
                 <?php
                 require_once './dbconfig_doc.php';
-            
+
                 if (isset($_COOKIE['lwmt_dm'])) {
                   mysql_select_db('user');
                   $username = $_COOKIE['lwmt_dm'];
                   $sql = "SELECT * FROM user WHERE username = '$username' limit 1";
                   $result = mysql_query($sql);
                   $row = mysql_fetch_array($result);
-                
-               
 
-                  if ($row['authority']=="all"||$row['authority']=="doc_edit") {
+
+
+                  if ($row['authority'] == "all" || $row['authority'] == "doc_edit") {
                     echo "{
     title: '作废',
     id: 'nullify',

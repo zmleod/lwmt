@@ -155,11 +155,7 @@
     
     
     
-           <div class="layui-inline">
-      <label class="layui-form-label">腐蚀前质量(g)</label>
-      <input style="width: 100px;" type="text" value="' . $get_row['zhongliang_jinmohou'] . '" name="zhongliang_jinmohou_' . $i . '" placeholder="" autocomplete="off" class="layui-input">
-    </div>
-    
+  
     
               <div class="layui-inline">
       <label class="layui-form-label">去除腐蚀产物后质量(g)</label>

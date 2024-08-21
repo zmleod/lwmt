@@ -50,9 +50,9 @@
       <ul class="layui-nav layui-layout-left">
         <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft"> <i class="layui-icon layui-icon-spread-left"></i> </li>
         <li class="layui-nav-item  layui-this"><a href="#" id="index_link">数据汇总</a></li>
-        <li class="layui-nav-item"><a href="#" id="ansys_link">统计分析</a></li>
-        <li class="layui-nav-item"><a href="#" id="doc_link">文件管理</a></li>
-        <li class="layui-nav-item"><a href="#" id="thesis_link">公开报告</a></li>
+        <li class="layui-nav-item"><a href="#" id="ansys_link">质量分析</a></li>
+        <li class="layui-nav-item"><a href="#" id="doc_link">体系文件</a></li>
+        <li class="layui-nav-item"><a href="#" id="thesis_link">课题报告</a></li>
       </ul>
       <ul class="<?php
                   if (isset($_COOKIE['lwmt_dm'])) {
@@ -131,7 +131,7 @@
       <!--tabs标签-->
       <div class="layui-tab layui-tab-card" lay-filter="demo_index" lay-allowclose="true">
         <ul class="layui-tab-title" id="demo_index">
-       
+
         </ul>
 
         <!--这个容器用来显示各个tab-->
@@ -223,7 +223,7 @@
 
       </div>
     </div>
-    
+
     <!--ANSYS 主体内容区-->
     <div class="layui-body" id="body_ansys" style="display:none;">
 
@@ -260,7 +260,7 @@
       </div>
     </div>
 
-   
+
 
 
 
@@ -299,7 +299,7 @@
       <div class="layui-tab layui-tab-card" lay-filter="demo_doc" lay-allowclose="true">
 
         <ul class="layui-tab-title" id="demo_doc">
-          
+
         </ul>
 
         <div class="layui-tab-content">
@@ -334,18 +334,19 @@
 
 
 
-    
+
     <!--thesis左侧导航-->
     <div class="layui-side layui-bg-black" id="left_nav_thesis" style="display:none;">
       <div class="layui-side-scroll">
         <!-- thesis 左侧导航区域 -->
 
 
-        <ul class="layui-nav layui-nav-tree">
+        <ul class="layui-nav layui-nav-tree" lay-filter="thesis_nav_filter">
           <li class="layui-nav-item layui-nav-itemed">
             <!--需要展开的话这里的代码是 layui-nav-item layui-nav-itemed-->
             <a href="javascript:;">公开报告</a>
             <dl class="layui-nav-child">
+              <dd class="layui-nav-item layui-this leftdaohang_thesis" data-url="./page/project/index.php" mytitle="课题列表"><a href="javascript:;">&nbsp;&nbsp;&nbsp;&nbsp;课题列表</a></dd>
               <dd class="layui-nav-item leftdaohang_thesis" data-url="./page/thesis/thesis_list.php" mytitle="报告列表"><a href="javascript:;">&nbsp;&nbsp;&nbsp;&nbsp;报告列表</a></dd>
 
             </dl>
@@ -355,7 +356,7 @@
 
       </div>
     </div>
-    
+
     <!--thesis 主体内容区-->
     <div class="layui-body" id="body_thesis" style="display:none;">
 
@@ -364,7 +365,7 @@
       <div class="layui-tab layui-tab-card" lay-filter="demo_thesis" lay-allowclose="true">
 
         <ul class="layui-tab-title" id="demo_thesis">
-     
+
         </ul>
 
         <div class="layui-tab-content">
@@ -411,6 +412,12 @@
         id: "文件清单"
       })
       element.tabChange('demo_doc', '文件清单');
+      element.tabAdd('demo_thesis', { //课题选项卡开始时就显示清单 
+        title: "课题列表",
+        content: '<iframe style="width: 100%;height: 80vh;" scrolling="auto" src="./page/project/index.php"></iframe>',
+        id: "课题列表"
+      })
+      element.tabChange('demo_thesis', '课题列表');
 
       //触发事件
       var active_index = {
@@ -674,7 +681,7 @@
       document.getElementById('left_nav_doc').style.display = 'none'; // 隐藏doc
       document.getElementById('body_doc').style.display = 'none'; // 
 
-      
+
       document.getElementById('left_nav_thesis').style.display = 'none'; // 隐藏thesis
       document.getElementById('body_thesis').style.display = 'none'; // 
 
@@ -708,7 +715,7 @@
       document.getElementById('left_nav_ansys').style.display = 'none'; // 隐藏ansys
       document.getElementById('body_ansys').style.display = 'none'; // 
 
-      
+
       document.getElementById('left_nav_thesis').style.display = 'none'; // 隐藏thesis
       document.getElementById('body_thesis').style.display = 'none'; // 
 
@@ -737,7 +744,7 @@
 
 
 
-    /*选项卡右键关闭刷新*/
+    /*选项卡右键功能，每个BODY是一块单独的代码*/
     layui.config({
       base: 'js/',
     }).use(['element', 'tabrightmenu'], function() {
@@ -808,6 +815,36 @@
       rightmenu_.render({
         container: '#body_doc',
         filter: 'demo_doc',
+        navArr: [{
+            eventName: 'refresh',
+            title: '刷新当前页'
+          },
+          {
+            eventName: 'closethis',
+            title: '关闭当前页'
+          },
+          {
+            eventName: 'closeall',
+            title: '关闭所有页'
+          },
+          {
+            eventName: 'closeothers',
+            title: '关闭其它页'
+          }
+        ],
+      });
+    });
+
+    layui.config({
+      base: 'js/',
+    }).use(['element', 'tabrightmenu'], function() {
+      let element = layui.element;
+      let rightmenu_ = layui.tabrightmenu;
+
+      // 默认方式渲染全部：关闭当前（closethis）、关闭所有（closeall）、关闭其它（closeothers）、关闭左侧所有（closeleft）、关闭右侧所有（closeright）、刷新当前页（refresh）
+      rightmenu_.render({
+        container: '#body_thesis',
+        filter: 'demo_thesis',
         navArr: [{
             eventName: 'refresh',
             title: '刷新当前页'

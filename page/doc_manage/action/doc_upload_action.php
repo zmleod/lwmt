@@ -13,6 +13,7 @@ $doc_name = $_POST['doc_name']; //这是确定的文件名
 
 $doc_number = $_POST['doc_number'];
 $doc_version = $_POST['doc_version'];
+$edit_record = $_POST['edit_record'];
 $department = $_POST['department'];
 $effective_date = $_POST['effective_date'];
 $remark = $_POST['remark'];
@@ -37,7 +38,7 @@ if (is_file($dir_effective_new)) {    // 如果有同name文件，提示手动�
 
     move_uploaded_file($_FILES["file"]["tmp_name"], $dir_effective_new); //移动文件时要用转码后的字符串，不然乱码。插入数据库要用转码前的字符串，不然插不进！！！
 
-    $sql_effective="INSERT INTO doc (id,doc_name,doc_number,doc_version,is_effective,effective_date,department,remark,dir) VALUES (null,'$doc_name','$doc_number','$doc_version','y','$effective_date','$department','$remark','$dir_effective_datatable')";
+    $sql_effective="INSERT INTO doc (id,doc_name,doc_number,doc_version,edit_record,is_effective,effective_date,department,remark,dir) VALUES (null,'$doc_name','$doc_number','$doc_version','$edit_record','y','$effective_date','$department','$remark','$dir_effective_datatable')";
     $result_effective=mysql_query($sql_effective);
 
 if( $result_effective){
