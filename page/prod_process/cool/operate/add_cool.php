@@ -144,7 +144,14 @@
       </div>
     </div>
     <div class="layui-form-item">
-      <label class="layui-form-label">弹簧频次</label>
+      <label class="layui-form-label">喷嘴截面</label>
+      <div class="layui-input-block">
+        <input type="text" name="penzuijiemian" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    
+    <div class="layui-form-item">
+      <label class="layui-form-label">弹簧频次φ27*35</label>
       <div class="layui-input-block">
         <input type="text" name="tanhuang_pinci" placeholder="" autocomplete="off" class="layui-input">
       </div>
@@ -251,11 +258,34 @@
 
 
     </div>
-
+    <div class="layui-form-item">
+      <label class="layui-form-label">辊轮材质</label>
+      <div class="layui-input-block">
+        <input type="text" name="gunluncaizhi" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">辊轮直径</label>
+      <div class="layui-input-block">
+        <input type="number" name="gunlunzhijing" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
     <div class="layui-form-item">
       <label class="layui-form-label">辊轮转速(r/min)</label>
       <div class="layui-input-block">
         <input type="number" name="shuaidai_gunlun_zhuansu_xiansudu" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">进水流量</label>
+      <div class="layui-input-block">
+        <input type="number" name="jinshuiliuliang" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">进水温度</label>
+      <div class="layui-input-block">
+        <input type="number" name="jinshuiwendu" placeholder="" autocomplete="off" class="layui-input">
       </div>
     </div>
 

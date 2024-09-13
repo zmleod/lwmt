@@ -8,9 +8,45 @@
   <script src="../../../assets/js/layui.js"></script>
   <script src="../../../assets/js/jquery.min.js"></script>
 </head>
+<style>
+  .layui-table-cell {
+    white-space: normal;
+    height: auto !important;
+    word-break: break-all;
+  }
+
+  .layui-table-cell {
+    text-align: center;
+    /* 水平居中 */
+  }
+</style>
 
 <body>
   <table id="my_table" lay-filter="my_table">
+    <script type="text/html" id="hebing_ganguo_fagan_penzui">
+    {{d.shuaidai_ganguo}}&nbsp;{{d.shuaidai_fagan}}&nbsp;{{d.shuaidai_penzui}}<br>
+    {{d.ganguo_pinci}}&nbsp;{{d.fagan_pinci}}&nbsp;{{d.penzui_pinci}}
+    </script>
+    <script type="text/html" id="hebing_gunlun">
+    {{d.gunluncaizhi}}<br>
+    {{d.gunlunzhijing}}
+    </script>
+    <script type="text/html" id="hebing_jinshui">
+    {{d.jinshuiliuliang}}<br>
+    {{d.jinshuiwendu}}
+    </script>
+    <script type="text/html" id="hebing_ganguo_shizhong">
+    {{d.shuaidai_pendai_yali}}<br>
+    {{d.shuaidai_pendai_yali_2}}
+    </script>
+    <script type="text/html" id="hebing_CO2">
+    {{d.CO2_1}}<br>
+    {{d.CO2_2}}
+    </script>
+    <script type="text/html" id="hebing_O2">
+    {{d.shuaidai_yangqi_nongdu}}<br>
+    {{d.shuaidai_yangqi_nongdu_2}}
+    </script>
   </table>
   <script type="text/html" id="toolbar_get_row_data">
     <a href="./operate/add_cool.php" class="layui-btn layui-btn-sm">新增数据</a>
@@ -73,6 +109,7 @@
                 hide: true,
                 edit: editable
               },
+
               {
                 field: 'shuaidai_canyuren',
                 title: '参与人',
@@ -106,61 +143,48 @@
 
               {
                 field: 'shuaidai_hejin_zhongliang',
-                title: '合金重量<br> (g)',
+                title: '合金重量',
                 edit: editable,
                 width: 100
               },
               {
-                field: 'shuaidai_ganguo',
-                title: '坩埚',
-                edit: editable,
-                width: 60
+                field: 'combined',
+                title: '坩埚+阀杆+喷嘴',
+                templet: '#hebing_ganguo_fagan_penzui',
+                width: 140
               },
               {
-                field: 'ganguo_pinci',
-                title: '频次/坩埚',
-                edit: editable,
-                width: 60
-              },
-              {
-                field: 'shuaidai_fagan',
-                title: '阀杆',
-                edit: editable,
-                width: 60
-              },
-              {
-                field: 'fagan_pinci',
-                title: '频次/阀杆',
-                edit: editable,
-                width: 60
-              },
-              {
-                field: 'shuaidai_penzui',
-                title: '喷嘴',
-                edit: editable,
-                width: 60
-              },
-              {
-                field: 'penzui_pinci',
-                title: '频次/喷嘴',
+                field: 'penzuijiemian',
+                title: '喷嘴截面',
                 edit: editable,
                 width: 60
               },
               {
                 field: 'tanhuang_pinci',
-                title: '频次/弹簧',
+                title: '弹簧频次<br>φ27*35',
                 edit: editable,
-                width: 60
+                width: 100
               },
               {
+                field: 'combined',
+                title: '辊轮',
+                templet: '#hebing_gunlun'
+              },
+
+              {
                 field: 'shuaidai_xiansudu',
-                title: '线速度<br> (m/s)',
+                title: '线速度',
                 edit: editable,
                 width: 80
               },
               {
+                field: 'combined',
+                title: '进水',
+                templet: '#hebing_jinshui'
+              },
+              {
                 field: 'shuaidai_shijian',
-                title: '时间<br> (min)',
+                title: '时间',
                 edit: editable,
                 width: 60
               },
@@ -171,17 +195,12 @@
                 width: 100
               },
               {
-                field: 'shuaidai_pendai_yali',
-                title: '坩埚始压<br> (KPa)',
-                edit: editable,
-                width: 100
+                field: 'combined',
+                title: '坩埚<br>始终压',
+                templet: '#hebing_ganguo_shizhong',
+                width: 80
               },
-              {
-                field: 'shuaidai_pendai_yali_2',
-                title: '坩埚终压<br> (KPa)',
-                edit: editable,
-                width: 100
-              },
+
               {
                 field: 'shuaidai_gunzui_jianju',
                 title: '辊嘴间距',
@@ -190,62 +209,55 @@
               },
               {
                 field: 'shuaidai_qishi_meiye_wendu',
-                title: '镁液温度<br> (℃)',
+                title: '镁液温度',
                 edit: editable,
                 width: 100
               },
               {
                 field: 'shuaidai_daicai_houdu',
-                title: '带材厚度<br> (um)',
+                title: '带材厚度',
                 edit: editable,
                 width: 100
               },
               {
                 field: 'shuaidai_daicai_kuandu',
-                title: '带材宽度<br> (mm)',
+                title: '带材宽度',
                 edit: editable,
                 width: 100
               },
               {
                 field: 'shuaidai_jingzhi_shijian',
-                title: '静置时间<br> (min)',
+                title: '静置时间',
                 edit: editable,
                 width: 100
               },
               {
-                field: 'shuaidai_yangqi_nongdu',
-                title: '氧气浓度（始）<br> (%)',
-                edit: editable,
-                width: 100
-              },
-              {
-                field: 'shuaidai_yangqi_nongdu_2',
-                title: '氧气浓度（终）<br> (%)',
-                edit: editable,
-                width: 100
+                field: 'combined',
+                title: '氧气',
+                templet: '#hebing_O2'
               },
               {
                 field: 'shuaidai_zhifen_zhongliang',
-                title: '制粉重量<br> (g)',
+                title: '制粉重量',
                 edit: editable,
                 width: 100
               },
 
               {
                 field: 'shuaidai_gunlun_zhuansu_xiansudu',
-                title: '辊轮线速度<br> (m/s)',
+                title: '辊轮线速度',
                 edit: editable,
                 width: 100
               },
               {
                 field: 'shuaidai_paoguang_zhuansu',
-                title: '抛光转速<br> (??)',
+                title: '抛光转速',
                 edit: editable,
                 width: 100
               },
               {
                 field: 'shuaidai_paoguanglun_mushu',
-                title: '抛光轮目数<br> ',
+                title: '抛光轮目数 ',
                 edit: editable,
                 width: 100
               },
@@ -256,20 +268,12 @@
                 width: 100
               },
               {
-                field: 'CO2_1',
-                title: 'CO2流量<br>（L/min）',
-                edit: editable,
-                width: 100
-              },
-              {
-                field: 'CO2_2',
-                title: 'CO2用量<br>（m³）',
-                edit: editable,
+                field: 'combined',
+                title: 'CO2流量/用量',
+                templet: '#hebing_CO2',
                 width: 100
               },
 
-              
-              
 
 
               {
@@ -486,9 +490,11 @@
           elem: '#date_end',
 
         });
+
       });
+
     $(document).ready(function() {
-     
+
       var $inputs = $('input[class="layui-input search"]');
       // 监听 input 值的变化
       $inputs.on('input', function() {

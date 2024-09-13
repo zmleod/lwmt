@@ -54,9 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shuaidai_yangqi_nongdu_2 = $jsonObj['shuaidai_yangqi_nongdu_2'];
     $CO2_1 = $jsonObj['CO2_1'];
     $CO2_2 = $jsonObj['CO2_2'];
+
+    //2024.9.10 毛微信
+
+    $penzuijiemian = $jsonObj['penzuijiemian'];
+    $gunluncaizhi = $jsonObj['gunluncaizhi'];
+    $gunlunzhijing = $jsonObj['gunlunzhijing'];
+    $jinshuiliuliang = $jsonObj['jinshuiliuliang'];
+    $jinshuiwendu = $jsonObj['jinshuiwendu'];
+ 
+    
 }
 
-$sql = "INSERT INTO prod_process_cool (id,shuaidai_tianbiaoren,shuaidai_canyuren,shuaidai_shebei,laiyuan_picihao,laiyuan_picihao_add,shuaidai_riqi,shuaidai_luhao,shuaidai_paihao,shuaidai_hejin_zhongliang,shuaidai_zhifen_zhongliang,shuaidai_ganguo,shuaidai_fagan,shuaidai_penzui,shuaidai_xiansudu,shuaidai_shijian,shuaidai_liudao_shuliang,shuaidai_pendai_yali,shuaidai_gunzui_jianju,shuaidai_qishi_meiye_wendu,shuaidai_daicai_houdu,shuaidai_daicai_kuandu,shuaidai_jingzhi_shijian,shuaidai_yangqi_nongdu,shuaidai_beizhu,shuaidai_gunlun_zhuansu_xiansudu,shuaidai_paoguang_zhuansu,shuaidai_paoguanglun_mushu,shuaidai_kongzai_fuzeren,ganguo_pinci,fagan_pinci,penzui_pinci,tanhuang_pinci,shuaidai_pendai_yali_2,shuaidai_yangqi_nongdu_2,CO2_1,CO2_2) VALUES (null,'$shuaidai_tianbiaoren','$shuaidai_canyuren','$shuaidai_shebei','$laiyuan_picihao','$laiyuan_picihao_add','$shuaidai_riqi','$shuaidai_luhao','$shuaidai_paihao','$shuaidai_hejin_zhongliang','$shuaidai_zhifen_zhongliang','$shuaidai_ganguo','$shuaidai_fagan','$shuaidai_penzui','$shuaidai_xiansudu','$shuaidai_shijian','$shuaidai_liudao_shuliang','$shuaidai_pendai_yali','$shuaidai_gunzui_jianju','$shuaidai_qishi_meiye_wendu','$shuaidai_daicai_houdu','$shuaidai_daicai_kuandu','$shuaidai_jingzhi_shijian','$shuaidai_yangqi_nongdu','$shuaidai_beizhu','$shuaidai_gunlun_zhuansu_xiansudu','$shuaidai_paoguang_zhuansu','$shuaidai_paoguanglun_mushu','$shuaidai_kongzai_fuzeren','$ganguo_pinci','$fagan_pinci','$penzui_pinci','$tanhuang_pinci','$shuaidai_pendai_yali_2','$shuaidai_yangqi_nongdu_2','$CO2_1','$CO2_2')";
+$sql = "INSERT INTO prod_process_cool (id,shuaidai_tianbiaoren,shuaidai_canyuren,shuaidai_shebei,laiyuan_picihao,laiyuan_picihao_add,shuaidai_riqi,shuaidai_luhao,shuaidai_paihao,shuaidai_hejin_zhongliang,shuaidai_zhifen_zhongliang,shuaidai_ganguo,shuaidai_fagan,shuaidai_penzui,shuaidai_xiansudu,shuaidai_shijian,shuaidai_liudao_shuliang,shuaidai_pendai_yali,shuaidai_gunzui_jianju,shuaidai_qishi_meiye_wendu,shuaidai_daicai_houdu,shuaidai_daicai_kuandu,shuaidai_jingzhi_shijian,shuaidai_yangqi_nongdu,shuaidai_beizhu,shuaidai_gunlun_zhuansu_xiansudu,shuaidai_paoguang_zhuansu,shuaidai_paoguanglun_mushu,shuaidai_kongzai_fuzeren,ganguo_pinci,fagan_pinci,penzui_pinci,tanhuang_pinci,shuaidai_pendai_yali_2,shuaidai_yangqi_nongdu_2,CO2_1,CO2_2,penzuijiemian,gunluncaizhi,gunlunzhijing,jinshuiliuliang,jinshuiwendu) VALUES (null,'$shuaidai_tianbiaoren','$shuaidai_canyuren','$shuaidai_shebei','$laiyuan_picihao','$laiyuan_picihao_add','$shuaidai_riqi','$shuaidai_luhao','$shuaidai_paihao','$shuaidai_hejin_zhongliang','$shuaidai_zhifen_zhongliang','$shuaidai_ganguo','$shuaidai_fagan','$shuaidai_penzui','$shuaidai_xiansudu','$shuaidai_shijian','$shuaidai_liudao_shuliang','$shuaidai_pendai_yali','$shuaidai_gunzui_jianju','$shuaidai_qishi_meiye_wendu','$shuaidai_daicai_houdu','$shuaidai_daicai_kuandu','$shuaidai_jingzhi_shijian','$shuaidai_yangqi_nongdu','$shuaidai_beizhu','$shuaidai_gunlun_zhuansu_xiansudu','$shuaidai_paoguang_zhuansu','$shuaidai_paoguanglun_mushu','$shuaidai_kongzai_fuzeren','$ganguo_pinci','$fagan_pinci','$penzui_pinci','$tanhuang_pinci','$shuaidai_pendai_yali_2','$shuaidai_yangqi_nongdu_2','$CO2_1','$CO2_2','$penzuijiemian','$gunluncaizhi','$gunlunzhijing','$jinshuiliuliang','$jinshuiwendu')";
 
 
 $p = mysql_query($sql);
